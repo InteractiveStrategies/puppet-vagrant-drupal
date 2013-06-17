@@ -1,0 +1,41 @@
+/*
+Bootstrap PHP enviroment beyond typcial installs for better Drupal support.:w
+*/
+  package { php-gd: }
+  package { php-mysql: }
+  package { php-mbstring: }
+  package { php-pear: }
+  Package {
+    ensure => installed }
+/*
+  exec { "pear install Console_Table":
+    unless => "/usr/bin/pear install Console_Table",
+    command => Package['php-pear']
+  }
+*/
+/*
+Pulls in all puppet manifests within the classes folder, within root dir
+  
+  import "classes/*"
+  class {'drupal::drush':}
+*/
+  import "classes/*"
+  mysql::db { 'mydb':
+    user => 'HU4u5K77erW6dey',
+    password => 'Fw@U+Uvs)2+<kv[',
+    host => 'localhost',
+    grant => ['all'],
+  }
+
+  apache::vhost { 'custombriefings.interactiverequest' :
+    vhost_name => 'custombriefings.interactiverequest',
+    port => '80',
+    docroot => '/vagrant/wordpress/',
+    serveradmin => 'support@interactivestrategies.com',
+  }
+ /* 
+  file { '/home/custombriefings.interactiverequest.com':
+    ensure => 'link',
+    target => '/vagrant/custom-briefings/trunk',
+  }
+  */
