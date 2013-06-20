@@ -25,10 +25,10 @@ DB filename and path relavant to project/trunk/ ie:
 |----|`_docs
 |---------|`mycoolsite.sql
 $db_file = '/vagrant/_docs/mycoolsite.sql'
-*/
+
 
 $db_file = '/vagrant/_docs/apwu/apwu_stage.sql'
-
+*/
 /*
 Bootstrap PHP enviroment beyond typcial installs for better Drupal support.
 */
@@ -40,7 +40,7 @@ Bootstrap PHP enviroment beyond typcial installs for better Drupal support.
   Package {
     ensure => installed }
 /*
-  Pear currently causing as fail, after initial install.
+  Pear currently causing a fail, after initial install.
 */
   exec { "pear install Console_Table":
     unless => "/usr/bin/pear install Console_Table",
@@ -63,12 +63,14 @@ Bootstrap PHP enviroment beyond typcial installs for better Drupal support.
     host => $db_host,
     grant => ['all'],
   }
-notice ('sudo mysql -u root -ptester $db_name < $db_file')
 
+/* Uncomment this section to load a databse: currently over writes everything.
   exec { "restore database":
     command => "mysql -u root -ptester $db_name < $db_file",
     path => '/usr/bin/',
   }
+  */
+
 /* 
   Create Apache Vhost
 */

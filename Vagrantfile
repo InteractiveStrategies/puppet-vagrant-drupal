@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "Cent"
+  config.vm.box = "chimchim-jr"
 
 
   # The url from where the 'config.vm.box' box will be fetched if it
@@ -68,9 +68,9 @@ Vagrant.configure("2") do |config|
   # #               Managed by Puppet.\n"
   # # }
   #
-  config.vm.synced_folder "/home/scratch/Projects/interactive_drupal/trunk", "/vagrant/"
-  config.vm.network :public_network
-  config.vm.network :forwarded_port, guest: 80, host: 80
+  #  config.vm.synced_folder "/home/scratch/Projects/interactive_drupal/trunk", "/vagrant/"
+  #config.vm.network :public_network
+  #config.vm.network :forwarded_port, guest: 80, host: 80
   config.vm.provision :puppet, :options => "--verbose --debug" do |puppet|
      puppet.manifests_path = "manifests"
      puppet.manifest_file  = "default.pp"
