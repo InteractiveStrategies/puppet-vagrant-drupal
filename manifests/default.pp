@@ -43,8 +43,8 @@ Bootstrap PHP enviroment beyond typcial installs for better Drupal support.
   Pear currently causing a fail, after initial install.
 */
   exec { "pear install Console_Table":
-    unless => "/usr/bin/pear install Console_Table",
-    command => Package['php-pear']
+    command => "/usr/bin/pear install Console_Table",
+    require => Package['php-pear']
   }
 
 /*
