@@ -8,5 +8,5 @@ This is not yet ready for public usage, and should be throughly reviewed to ensu
 
 Work in progress, and use at your on discretion.
 
-## Intnet
+## Intention
 The goal of this project is to bootstrap and drupal enviroment such that it can install Drupal from scratch using drush as standalone or using the archive expand option.
