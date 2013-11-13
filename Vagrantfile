@@ -68,8 +68,8 @@ Vagrant.configure("2") do |config|
   # #               Managed by Puppet.\n"
   # # }
   #
-  #  config.vm.synced_folder "/home/scratch/Projects/interactive_drupal/trunk", "/vagrant/"
-  #config.vm.network :public_network
+  config.vm.synced_folder "", "/vagrant/"
+  config.vm.network :public_network
   #config.vm.network :forwarded_port, guest: 80, host: 80
   config.vm.provision :puppet, :options => "--verbose --debug" do |puppet|
      puppet.manifests_path = "manifests"
