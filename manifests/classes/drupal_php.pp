@@ -21,7 +21,6 @@ class php_drupal {
 		centos, redhat: {
 			package { $rpm_php_packages:
 				ensure => installed }
-	
 			pear::package { "drush":
 				repository => "pear.drush.org",
 			}
