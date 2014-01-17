@@ -1,7 +1,7 @@
 class drupal_db (
 	$drupal_user = drupal,
 	$drupal_user_password = drupal,
-	$drupal_database = drupal,
+	$drupal_database = 'drupal',
 	$root_db_pwd = 'interactivedatabase',
 	$backup_db = true,
         )
@@ -12,7 +12,7 @@ class drupal_db (
 	class { '::mysql::server':
 		root_password => $root_db_pwd,
 	}
-	
+	#set backup
 	case $backup_db {
 		true: {
 			class { '::mysql::server::backup':
@@ -22,11 +22,13 @@ class drupal_db (
 				backuprotate   => 10,
 				file_per_database => true,
 			}
+			notify { 'Automated backups are set to run.': } 
 		}
 	}
-	
+	# mysql client
 	class { '::mysql::client':}
-	mysql::db { $drupal_database :
+	# set database for drupal
+	mysql::db { $drupal_db:
 		user     => $drupal_user,
 		password => $drupal_user_password,
 		host     => 'localhost',

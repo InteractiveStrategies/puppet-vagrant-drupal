@@ -1,4 +1,4 @@
-class php_drupal {
+class drupal_php {
 	/*
 	*Class for initililzing minimal Drupal PHP requirements needed to run drupal.
 	*TODO add logic for coniditionally installing drush...
