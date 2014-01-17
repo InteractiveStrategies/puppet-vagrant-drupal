@@ -19,3 +19,6 @@
 [submodule "modules/pear"]
 	path = modules/pear
 	url = https://github.com/treehouseagency/puppet-pear.git
+[submodule "modules/concat"]
+	path = modules/concat
+	url = https://github.com/puppetlabs/puppetlabs-concat.git
